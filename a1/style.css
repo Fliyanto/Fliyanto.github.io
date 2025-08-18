@@ -19,6 +19,7 @@ nav[aria-label="Index"] {
   margin: 0;
   padding-left: clamp(16px, 4vw, 48px);
   padding-right: clamp(16px, 4vw, 48px);
+  border-radius: 12px;
 }
 
 body > header {
@@ -43,7 +44,7 @@ nav[aria-label="Index"] {
   z-index: 10;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  background: #fff;
+  background: #eef7f1;
   border-bottom: 1px solid #efefef;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
 }
@@ -261,4 +262,105 @@ a:focus {
   text-align: justify; /* why: clean edge on the right */
   text-justify: inter-word;
   hyphens: auto;
+}
+/* Colours*/
+body {
+  background: linear-gradient(135deg, #c6e2d2, #e3f1e8);
+}
+.qa {
+  border-radius: 12px; /* rounded corners */
+  border: 1px solid #eee; /* subtle edge so the box is readable */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* soft shadow (not too heavy) */
+  padding: 1.25rem 1.5rem; /* breathing room inside */
+  margin: 1.5rem 0; /* space between boxes */
+}
+
+/* Neat top spacing for the section title inside the box */
+.qa > h2 {
+  margin-top: 0;
+}
+
+/* Keep your thin inner divider between Q and A (already in your CSS) */
+.answer {
+  border-left: 1px solid #e6e6e6;
+  padding-left: 1rem;
+}
+.qa.alt .answer {
+  border-left: none;
+  padding-left: 0;
+}
+.qa.alt .question {
+  border-left: 1px solid #e6e6e6;
+  padding-left: 1rem;
+}
+
+/* Justify response text for a cleaner right edge */
+.answer p {
+  text-align: justify;
+}
+
+/* ---- Simple per-section colors (edit these hex codes as you like) ---- */
+#q1 {
+  background: #eef7f1;
+}
+#q2 {
+  background: #eef7f1;
+}
+#q3 {
+  background: #eef7f1;
+}
+#q4 {
+  background: #eef7f1;
+}
+#q5 {
+  background: #eef7f1;
+}
+#q6 {
+  background: #eef7f1;
+}
+#q7 {
+  background: #eef7f1;
+}
+#q8 {
+  background: #eef7f1;
+}
+#q9 {
+  background: #eef7f1;
+}
+#q10 {
+  background: #eef7f1;
+}
+#q11 {
+  background: #eef7f1;
+}
+#q12 {
+  background: #eef7f1;
+}
+#q13 {
+  background: #eef7f1;
+}
+nav[aria-label="Index"] {
+  padding-top: 1rem; /* a bit more breathing room */
+  padding-bottom: 1rem;
+  text-align: center; /* centers the h2 baseline */
+}
+
+/* Center the "Index" title */
+nav[aria-label="Index"] h2 {
+  text-align: center;
+  margin: 0 0 0.75rem;
+}
+
+/* Center the links, wrap to multiple rows, and space them nicely */
+nav[aria-label="Index"] ol {
+  justify-content: center; /* center the pills */
+  flex-wrap: wrap; /* allow 2+ rows */
+  gap: 0.75rem 1rem; /* comfy spacing between pills */
+  overflow: visible; /* no side-scroll */
+  scroll-snap-type: none; /* disable snap so centering is clean */
+}
+
+/* Slightly larger, nicer pills */
+nav[aria-label="Index"] a {
+  padding: 0.5rem 0.9rem;
 }
