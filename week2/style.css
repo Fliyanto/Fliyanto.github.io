@@ -61,5 +61,7 @@ main {
   gap: 1rem;
 }
 
-footer {
+#info-para {
+  padding: 2rem 1rem;
+  padding-right: 0;
 }

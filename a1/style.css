@@ -1,0 +1,153 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #fff;
+}
+
+/* Full-width regions (no centering) */
+body > header,
+main,
+nav[aria-label="Index"] {
+  max-width: none; /* why: use full width */
+  margin: 0;
+  padding-left: clamp(16px, 4vw, 48px);
+  padding-right: clamp(16px, 4vw, 48px);
+}
+
+body > header {
+  text-align: left; /* why: avoid centered feel */
+  padding-top: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e6e6e6;
+}
+body > header h1 {
+  margin: 0 0 0.25rem;
+}
+body > header h4 {
+  margin: 0;
+  font-weight: 400;
+  color: #555;
+}
+
+/* ----- Horizontal, sticky Index nav ----- */
+nav[aria-label="Index"] {
+  position: sticky; /* why: keep nav in view */
+  top: 0;
+  z-index: 10;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+nav[aria-label="Index"] h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+nav[aria-label="Index"] ol {
+  /* horizontal list */
+  list-style: none; /* why: cleaner pills */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  overflow-x: auto; /* why: sideways scroll if too many */
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+}
+
+nav[aria-label="Index"] li {
+  scroll-snap-align: start;
+}
+
+nav[aria-label="Index"] a {
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  text-decoration: none;
+  color: #111;
+  border: 1px solid #ddd;
+  border-radius: 999px; /* why: subtle pill look */
+  transition: background 120ms, border-color 120ms;
+}
+
+nav[aria-label="Index"] a:hover,
+nav[aria-label="Index"] a:focus {
+  background: #f7f7f7;
+  border-color: #cfcfcf;
+  outline: none;
+}
+
+/* Sections (full-width, comfy side padding) */
+main > section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid #f0f0f0;
+  scroll-margin-top: 5rem; /* why: reveal title below sticky nav */
+}
+main > section:first-of-type {
+  border-top: 0;
+}
+
+/* Q/A grid spanning the page */
+.qa {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
+  grid-template-areas:
+    "title title"
+    "question answer";
+  gap: 1.25rem 3rem;
+  align-items: start;
+}
+
+.qa > h2 {
+  grid-area: title; /* why: title across columns */
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.question {
+  grid-area: question;
+}
+.answer {
+  grid-area: answer;
+}
+
+/* Alternate: swap sides without changing DOM order */
+.qa.alt {
+  grid-template-areas:
+    "title title"
+    "answer question";
+}
+
+.question h3,
+.answer h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+  color: #111;
+}
+
+.question,
+.answer {
+  padding: 0.25rem 0;
+}
+
+a {
+  color: #1a1a1a;
+}
+a:focus {
+  outline: 2px dashed #666;
+  outline-offset: 2px;
+}
