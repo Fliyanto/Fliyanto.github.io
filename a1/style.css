@@ -15,14 +15,14 @@ body {
 body > header,
 main,
 nav[aria-label="Index"] {
-  max-width: none; /* why: use full width */
+  max-width: none;
   margin: 0;
   padding-left: clamp(16px, 4vw, 48px);
   padding-right: clamp(16px, 4vw, 48px);
 }
 
 body > header {
-  text-align: left; /* why: avoid centered feel */
+  text-align: left;
   padding-top: 2rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid #e6e6e6;
@@ -57,7 +57,7 @@ nav[aria-label="Index"] h2 {
 
 nav[aria-label="Index"] ol {
   /* horizontal list */
-  list-style: none; /* why: cleaner pills */
+  list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
@@ -78,7 +78,7 @@ nav[aria-label="Index"] a {
   text-decoration: none;
   color: #111;
   border: 1px solid #ddd;
-  border-radius: 999px; /* why: subtle pill look */
+  border-radius: 999px;
   transition: background 120ms, border-color 120ms;
 }
 
@@ -89,18 +89,18 @@ nav[aria-label="Index"] a:focus {
   outline: none;
 }
 
-/* Sections (full-width, comfy side padding) */
+/* Sections */
 main > section {
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-top: 1px solid #f0f0f0;
-  scroll-margin-top: 5rem; /* why: reveal title below sticky nav */
+  scroll-margin-top: 5rem;
 }
 main > section:first-of-type {
   border-top: 0;
 }
 
-/* Q/A grid spanning the page */
+/* Q/A grid */
 .qa {
   display: grid;
   grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr);
@@ -112,7 +112,7 @@ main > section:first-of-type {
 }
 
 .qa > h2 {
-  grid-area: title; /* why: title across columns */
+  grid-area: title;
   margin: 0 0 0.5rem;
   font-size: 1.4rem;
 }
@@ -124,7 +124,7 @@ main > section:first-of-type {
   grid-area: answer;
 }
 
-/* Alternate: swap sides without changing DOM order */
+/* Alternate: swap sides */
 .qa.alt {
   grid-template-areas:
     "title title"
@@ -150,4 +150,115 @@ a {
 a:focus {
   outline: 2px dashed #666;
   outline-offset: 2px;
+}
+
+.qa {
+  max-width: 1100px; /* adjust to taste */
+  margin-left: 0; /* left-aligned block */
+  margin-right: auto;
+  text-align: left; /* left text by default */
+}
+
+/* Keep the section title aligning with the block side */
+.qa > h2 {
+  text-align: left;
+}
+
+/* Alternate sections: push block to the right and right-align text */
+.qa.alt {
+  margin-left: auto; /* right-aligned block */
+  margin-right: 0;
+  text-align: right;
+}
+
+/* Make the title follow the right edge too */
+.qa.alt > h2 {
+  text-align: right;
+}
+
+/* 1) Put the split exactly at 50% of the viewport */
+.qa {
+  column-gap: 0;
+} /* overrides the 3rem horizontal gap */
+
+/* 2) Space content away from the split */
+.qa .question {
+  padding-right: 1.5rem;
+} /* left half */
+.qa .answer {
+  padding-left: 1.5rem;
+} /* right half (default layout) */
+
+/* 3) Draw the vertical split on the inner edge of the right half */
+.qa .answer {
+  border-left: 1px solid #e6e6e6;
+}
+
+/* 4) When swapped (.alt), move the split to the other element */
+.qa.alt .answer {
+  border-left: 0;
+  padding-left: 0;
+  padding-right: 1.5rem; /* mirror spacing for left half */
+}
+.qa.alt .question {
+  border-left: 1px solid #e6e6e6; /* split stays aligned across sections */
+  padding-left: 1.5rem; /* mirror spacing for right half */
+}
+.qa {
+  position: relative; /* why: anchor the divider */
+  column-gap: 3rem; /* comfy space between columns */
+}
+
+/* Kill any previous heavy/full-height divider you added */
+.qa::before {
+  content: none !important;
+}
+
+/* Short, subtle divider centered at 50% (not attached to title/edges) */
+.qa::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* start a bit below the section title, end above the bottom padding */
+  top: 2.25rem; /* tune if your h2 size changes */
+  bottom: 1rem;
+  border-left: 1px solid #e6e6e6;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* 2) Soften spacing away from the split */
+.question {
+  padding-right: 1.5rem;
+}
+.answer {
+  padding-left: 1.5rem;
+}
+
+/* Mirror spacing for alternates (only if you use .alt to swap sides) */
+.qa.alt .question {
+  padding-left: 1.5rem;
+  padding-right: 0;
+}
+.qa.alt .answer {
+  padding-right: 1.5rem;
+  padding-left: 0;
+}
+
+/* Ensure no column draws its own full-height border */
+.answer,
+.qa.alt .question {
+  border-left: 0 !important;
+}
+.answer::before,
+.qa.alt .question::after {
+  content: none !important;
+}
+
+/* 3) Make Response paragraphs justified */
+.answer p {
+  text-align: justify; /* why: clean edge on the right */
+  text-justify: inter-word;
+  hyphens: auto;
 }
