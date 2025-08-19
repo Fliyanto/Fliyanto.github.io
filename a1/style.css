@@ -154,75 +154,66 @@ a:focus {
 }
 
 .qa {
-  max-width: 1100px; /* adjust to taste */
-  margin-left: 0; /* left-aligned block */
+  max-width: 1100px;
+  margin-left: 0;
   margin-right: auto;
-  text-align: left; /* left text by default */
+  text-align: left;
 }
 
-/* Keep the section title aligning with the block side */
 .qa > h2 {
   text-align: left;
 }
 
-/* Alternate sections: push block to the right and right-align text */
 .qa.alt {
-  margin-left: auto; /* right-aligned block */
+  margin-left: auto;
   margin-right: 0;
   text-align: right;
 }
 
-/* Make the title follow the right edge too */
 .qa.alt > h2 {
   text-align: right;
 }
 
-/* 1) Put the split exactly at 50% of the viewport */
 .qa {
   column-gap: 0;
-} /* overrides the 3rem horizontal gap */
+}
 
-/* 2) Space content away from the split */
 .qa .question {
   padding-right: 1.5rem;
-} /* left half */
+}
 .qa .answer {
   padding-left: 1.5rem;
-} /* right half (default layout) */
+}
 
-/* 3) Draw the vertical split on the inner edge of the right half */
 .qa .answer {
   border-left: 1px solid #e6e6e6;
 }
 
-/* 4) When swapped (.alt), move the split to the other element */
 .qa.alt .answer {
   border-left: 0;
   padding-left: 0;
-  padding-right: 1.5rem; /* mirror spacing for left half */
+  padding-right: 1.5rem;
 }
 .qa.alt .question {
-  border-left: 1px solid #e6e6e6; /* split stays aligned across sections */
-  padding-left: 1.5rem; /* mirror spacing for right half */
+  border-left: 1px solid #e6e6e6;
+  padding-left: 1.5rem;
 }
 .qa {
-  position: relative; /* why: anchor the divider */
-  column-gap: 3rem; /* comfy space between columns */
+  position: relative;
+  column-gap: 3rem;
 }
 
-/* Kill any previous heavy/full-height divider you added */
 .qa::before {
   content: none !important;
 }
 
-/* Short, subtle divider centered at 50% (not attached to title/edges) */
 .qa::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  /* start a bit below the section title, end above the bottom padding */
-  top: 2.25rem; /* tune if your h2 size changes */
+
+  top: 2.25rem;
   bottom: 1rem;
   border-left: 1px solid #e6e6e6;
   opacity: 0.8;
@@ -259,7 +250,7 @@ a:focus {
 
 /* 3) Make Response paragraphs justified */
 .answer p {
-  text-align: justify; /* why: clean edge on the right */
+  text-align: justify;
   text-justify: inter-word;
   hyphens: auto;
 }
@@ -268,19 +259,17 @@ body {
   background: linear-gradient(135deg, #c6e2d2, #e3f1e8);
 }
 .qa {
-  border-radius: 12px; /* rounded corners */
-  border: 1px solid #eee; /* subtle edge so the box is readable */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* soft shadow (not too heavy) */
-  padding: 1.25rem 1.5rem; /* breathing room inside */
-  margin: 1.5rem 0; /* space between boxes */
+  border-radius: 12px;
+  border: 1px solid #eee;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
 }
 
-/* Neat top spacing for the section title inside the box */
 .qa > h2 {
   margin-top: 0;
 }
 
-/* Keep your thin inner divider between Q and A (already in your CSS) */
 .answer {
   border-left: 1px solid #e6e6e6;
   padding-left: 1rem;
@@ -299,7 +288,6 @@ body {
   text-align: justify;
 }
 
-/* ---- Simple per-section colors (edit these hex codes as you like) ---- */
 #q1 {
   background: #eef7f1;
 }
@@ -340,9 +328,9 @@ body {
   background: #eef7f1;
 }
 nav[aria-label="Index"] {
-  padding-top: 1rem; /* a bit more breathing room */
+  padding-top: 1rem;
   padding-bottom: 1rem;
-  text-align: center; /* centers the h2 baseline */
+  text-align: center;
 }
 
 /* Center the "Index" title */
@@ -353,11 +341,11 @@ nav[aria-label="Index"] h2 {
 
 /* Center the links, wrap to multiple rows, and space them nicely */
 nav[aria-label="Index"] ol {
-  justify-content: center; /* center the pills */
-  flex-wrap: wrap; /* allow 2+ rows */
-  gap: 0.75rem 1rem; /* comfy spacing between pills */
-  overflow: visible; /* no side-scroll */
-  scroll-snap-type: none; /* disable snap so centering is clean */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  overflow: visible;
+  scroll-snap-type: none;
 }
 
 /* Slightly larger, nicer pills */
